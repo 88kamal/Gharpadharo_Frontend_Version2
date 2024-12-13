@@ -11,9 +11,10 @@ import {
 import { Link} from "react-router-dom";
 import ShareModal from "./ShareModal";
 import { FaUserCircle } from "react-icons/fa";
+import authService from "../../services/authService";
 
 const rolePaths = {
-    2: '/super-admin-dashboard/super-admin-home-page',
+    2: '/admin-dashboard/admin-home-page',
     14: '/shop-owner-dashboard/shop-owner-home-page',
     15: '/user-dashboard/user-home-page'
 };
@@ -23,7 +24,7 @@ export default function Navbars() {
     const [openNav, setOpenNav] = React.useState(false);
     const [openServices, setOpenServices] = React.useState(false);
 
-    const user = ""
+    const user = authService.getCurrentUser();
 
     React.useEffect(() => {
         const handleResize = () => {
@@ -151,7 +152,7 @@ export default function Navbars() {
                     <div className="flex items-center gap-3 lg:gap-3">
                         <div className="hidden lg:block">{navList}</div>
 
-                        <Link to={'/list-shop'}>
+                        <Link to={'/list-property'}>
                             <Button
                                 variant=""
                                 className="bg-[#dddffc] hidden lg:block border shadow-none hover:shadow-none border-indigo-400 rounded-lg py-2 px-4 lg:flex items-center space-x-2">

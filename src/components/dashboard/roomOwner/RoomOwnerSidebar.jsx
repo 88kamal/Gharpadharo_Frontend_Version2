@@ -10,10 +10,24 @@ import {
     HomeIcon,
     MapIcon,
 } from "@heroicons/react/24/solid";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Book } from "lucide-react";
+import { useLogoutMutation } from "../../../redux/slices/authApiSlice";
 
-export default function AdminSidebar() {
+export default function RoomOwnerSidebar() {
+
+    // const dispatch = useDispatch();
+    const [logout] = useLogoutMutation();
+
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        await logout(); // Call the logout mutation to remove token
+        navigate('/');  // Redirect to the home page after logout
+        // Reset the RTK query cache
+        // dispatch(apiSlice.util.resetApiState());
+    };
+
 
     return (
         <div className=" h-screen fixed w-full max-w-[16rem] p-4 
@@ -86,7 +100,7 @@ export default function AdminSidebar() {
                 </Link>
 
                 {/* Logout  */}
-                <ListItem className="hover:bg-primary/10 active:bg-primary/10 focus:bg-primary/10 transition-colors duration-300">
+                <ListItem onClick={handleLogout} className="hover:bg-primary/10 active:bg-primary/10 focus:bg-primary/10 transition-colors duration-300">
                     <ListItemPrefix>
                         <PowerIcon className="h-5 w-5" />
                     </ListItemPrefix>

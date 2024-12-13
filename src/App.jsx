@@ -20,13 +20,14 @@ import UserHomePage from "./pages/dashboard/user/pages/UserHomePage";
 import UserDashboard from "./pages/dashboard/user/UserDashboard";
 import AdminViewAllBookingRoom from "./pages/dashboard/admin/pages/AdminViewAllBookingRoom";
 import RoomOwnerRoomBookPage from "./pages/dashboard/roomOwner/pages/RoomOwnerRoomBookPage";
-
+import RoomOwnerDashboard from "./pages/dashboard/roomOwner/RoomOwnerDashboard";
+import { ProtectedRoute } from "./protectedRoute/ProtectedRoute";
 
 
 function App() {
   return (
     <div className="App">
-      <Router>
+      
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -41,7 +42,9 @@ function App() {
             <Route
               path="admin-dashboard"
               element={
+                <ProtectedRoute requiredRole={2}>
                 <AdminDashboard />
+                </ProtectedRoute>
               }>
 
               <Route
@@ -70,11 +73,18 @@ function App() {
             </Route>
           </>
 
+
+
+
+
+
           <>
             <Route
               path="user-dashboard"
               element={
-                <UserDashboard />
+                <ProtectedRoute requiredRole={15}>
+                  <UserDashboard />
+                </ProtectedRoute>   
               }>
 
               <Route
@@ -97,11 +107,18 @@ function App() {
             </Route>
           </>
 
+
+
+
+
+
           <>
             <Route
               path="room-owner-dashboard"
               element={
-                <AdminDashboard />
+                <ProtectedRoute requiredRole={14}>
+                  <RoomOwnerDashboard />
+                </ProtectedRoute>     
               }>
 
               <Route
@@ -131,7 +148,7 @@ function App() {
           </>
         </Routes>
         <Toaster />
-      </Router>
+ 
     </div>
   )
 }

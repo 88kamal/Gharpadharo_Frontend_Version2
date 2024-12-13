@@ -1,10 +1,54 @@
 import { Button, Input } from "@material-tailwind/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLoginMutation } from "../../redux/slices/authApiSlice";
+import toast from "react-hot-toast";
+import authService from "../../services/authService";
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
+
+    const [loginState, setLoginState] = useState({
+        email: '',
+        password: '',
+    });
+
+    const user = authService.getCurrentUser();
+
+    const navigate = useNavigate();
+
+    //* Redux mutation for login
+    const [login, { isLoading, error, data, isSuccess, isError }] = useLoginMutation();
+
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await login(loginState).unwrap();
+            // console.log(response); // Logged in user data, token etc
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(error?.data?.error || 'Login failed, please try again.');
+        }
+
+        if (isSuccess) {
+            toast.success(data?.message || 'Login successful!');
+            const rolePaths = {
+                2: '/admin-dashboard/admin-home-page',
+                14: '/room-owner-dashboard/room-owner-home-page',
+                15: '/'
+            };
+
+            navigate(rolePaths[user?.role]);
+
+        }
+    }, [isError, error, isSuccess, data]);
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
@@ -19,8 +63,12 @@ const LoginPage = () => {
                         <Input
                             type="email"
                             label="Email"
-                            color="green"
+                            color="indigo"
                             name="email"
+                            value={loginState.email}
+                            onChange={(e) =>
+                                setLoginState({ ...loginState, email: e.target.value })
+                            }
                         />
                     </div>
 
@@ -29,7 +77,11 @@ const LoginPage = () => {
                         <Input
                             type={showPassword ? "text" : "password"}
                             label="Password"
-                            color="green"
+                            color="indigo"
+                            value={loginState.password}
+                            onChange={(e) =>
+                                setLoginState({ ...loginState, password: e.target.value })
+                            }
                             icon={
                                 <button
                                     type="button"
@@ -50,9 +102,11 @@ const LoginPage = () => {
                     <div>
                         <Button
                             type="submit"
-                            className="w-full bg-green-500 text-white"
+                            className="w-full bg-secondary text-white"
+                            onClick={handleLogin}
+                            disabled={isLoading}
                         >
-                            Login
+                            {isLoading ? 'Logging in...' : 'Login'}
                         </Button>
                     </div>
 
