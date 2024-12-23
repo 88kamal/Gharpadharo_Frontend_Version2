@@ -2,19 +2,20 @@ import { Button, Input } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSignUpUserMutation } from "../../redux/slices/userApiSlice";
 
 const SignupPage = () => {
     const [formData, setFormData] = useState({
-        companyName: '',
-        ownerName: '',
-        companyEmail: '',
-        companyPhoneNumber: '',
+        userName: '',
+        userEmail: '',
+        userPhoneNumber: '',
         password: '',
-        businessType: '',
     });
 
     const [showPassword, setShowPassword] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({
@@ -23,36 +24,45 @@ const SignupPage = () => {
         });
     };
 
-    // Check if all fields are filled
-    const isFormValid = Object.values(formData).every((value) => value.trim() !== '');
+    const [signUpUser, { isLoading, isError, isSuccess, error, data }] = useSignUpUserMutation();
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await signUpUser(formData);
+    };
+
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(error?.data?.error || 'Login failed, please try again.');
+        }
+
+        if (isSuccess) {
+            toast.success(data?.message || 'Login successful!');
+            navigate('/login')
+        }
+    }, [isError, error, isSuccess, data]);
+
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
             {/* main div  */}
+            {/* <pre>{JSON.stringify(formData, null, 2)}</pre> */}
             <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
                 {/* Heading  */}
                 <h2 className="text-xl font-semibold text-center mb-6">Signup Business</h2>
                 {/* form  */}
-                <form className="space-y-4">
-                    <div>
-                        <Input
-                            type="text"
-                            label="Company Name"
-                            color="green"
-                            name="companyName"
-                            value={formData.companyName}
-                            onChange={handleChange}
-                        />
-                    </div>
+                <div className="space-y-4" >
 
                     {/* Owner Name Input  */}
                     <div>
                         <Input
                             type="text"
-                            label="Owner Name"
-                            color="green"
-                            name="ownerName"
-                            value={formData.ownerName}
+                            label="Name"
+                            color="indigo"
+                            name="userName"
+                            value={formData.userName}
                             onChange={handleChange}
                         />
                     </div>
@@ -62,9 +72,9 @@ const SignupPage = () => {
                         <Input
                             type="email"
                             label="Email"
-                            color="green"
-                            name="companyEmail"
-                            value={formData.companyEmail}
+                            color="indigo"
+                            name="userEmail"
+                            value={formData.userEmail}
                             onChange={handleChange}
                         />
                     </div>
@@ -74,9 +84,9 @@ const SignupPage = () => {
                         <Input
                             type="text"
                             label="Phone Number"
-                            color="green"
-                            name="companyPhoneNumber"
-                            value={formData.companyPhoneNumber}
+                            color="indigo"
+                            name="userPhoneNumber"
+                            value={formData.userPhoneNumber}
                             onChange={handleChange}
                         />
                     </div>
@@ -86,7 +96,7 @@ const SignupPage = () => {
                         <Input
                             type={showPassword ? "text" : "password"}
                             label="Password"
-                            color="green"
+                            color="indigo"
                             icon={<button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
@@ -103,28 +113,13 @@ const SignupPage = () => {
                         />
                     </div>
 
-                    {/* Business Type Input */}
-                    <div>
-                        <Input
-                            type="text"
-                            label="Business Type"
-                            color="green"
-                            name="businessType"
-                            value={formData.businessType}
-                            onChange={handleChange}
-                        />
-                    </div>
-
                     {/* Submit Button  */}
                     <div>
-                        <Button
-                            type="submit"
-                            className="w-full bg-green-500 text-white"
-                        //   disabled={!isFormValid || isLoading}
-                        >
-                            Signup
+                        <Button variant="" onClick={handleSubmit} className="w-full bg-indigo-400 hover:shadow-none shadow-none">
+                            {isLoading ? 'Signing Up...' : 'Sign Up'}
                         </Button>
                     </div>
+
 
                     <div className="">
                         <Link to={"/login"}>
@@ -133,7 +128,7 @@ const SignupPage = () => {
                             </h1>
                         </Link>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     );

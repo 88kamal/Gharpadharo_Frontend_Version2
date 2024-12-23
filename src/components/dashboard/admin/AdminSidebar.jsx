@@ -66,13 +66,13 @@ export default function AdminSidebar() {
                 </Link>
 
                 {/* Track Emloyee Page  */}
-                <Link to={'admin-view-all-room'}>
+                <Link to={'admin-view-all-users-and-accomodation-owners'}>
                     <ListItem
                         className="hover:bg-primary/10 active:bg-primary/10 focus:bg-primary/10 transition-colors duration-300">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
                         </ListItemPrefix>
-                        View Room
+                        View Acco. & Users
                     </ListItem>
                 </Link>
 

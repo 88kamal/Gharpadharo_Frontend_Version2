@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.slick-dots li button:before {
+    color: #1976d2; /* Adjust dot color */
+}
+.slick-prev:before, .slick-next:before {
+    color: #1976d2; /* Adjust arrow color */
+}

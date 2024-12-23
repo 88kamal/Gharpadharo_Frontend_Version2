@@ -102,7 +102,7 @@ const LoginPage = () => {
                     <div>
                         <Button
                             type="submit"
-                            className="w-full bg-secondary text-white"
+                            className="w-full bg-indigo-400 text-white"
                             onClick={handleLogin}
                             disabled={isLoading}
                         >

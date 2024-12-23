@@ -1,6 +1,7 @@
+
 const ShowAllRoomPage = () => {
   return (
-    <div>ShowAllRoomPage</div>
+    <div>all roms</div>
   )
 }
 

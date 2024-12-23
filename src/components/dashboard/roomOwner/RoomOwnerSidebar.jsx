@@ -13,6 +13,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { Book } from "lucide-react";
 import { useLogoutMutation } from "../../../redux/slices/authApiSlice";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 export default function RoomOwnerSidebar() {
 
@@ -66,14 +67,26 @@ export default function RoomOwnerSidebar() {
 
                 </Link>
 
+
                 {/* Track Emloyee Page  */}
-                <Link to={'room-owner-view-all-room'}>
+                <Link to={'room-owner-add-room'}>
+                    <ListItem
+                        className="hover:bg-primary/10 active:bg-primary/10 focus:bg-primary/10 transition-colors duration-300">
+                        <ListItemPrefix>
+                            <IoAddCircleOutline className="h-5 w-5" />
+                        </ListItemPrefix>
+                        Add Room
+                    </ListItem>
+                </Link>
+
+                {/* Track Emloyee Page  */}
+                <Link to={'room-owner-view-all-rooms'}>
                     <ListItem
                         className="hover:bg-primary/10 active:bg-primary/10 focus:bg-primary/10 transition-colors duration-300">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
                         </ListItemPrefix>
-                        View Room
+                        View Rooms
                     </ListItem>
                 </Link>
 
@@ -83,7 +96,7 @@ export default function RoomOwnerSidebar() {
                         <ListItemPrefix>
                             <Book className="h-5 w-5" />
                         </ListItemPrefix>
-                        View Book Room
+                        View Bookings
                     </ListItem>
                 </Link>
 

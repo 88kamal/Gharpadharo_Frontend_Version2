@@ -20,8 +20,8 @@ const BusinessMangerBottomNavigation = () => {
 
                 <NavItem
                     icon={<MapIcon className="w-6 h-6" />}
-                    label="View Room"
-                    link={'admin-view-all-room'}
+                    label="View Acco. & User"
+                    link={'admin-view-all-users-and-accomodation-owners'}
                 />
 
                 <NavItem
