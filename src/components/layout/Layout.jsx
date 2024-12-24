@@ -5,7 +5,7 @@ import Navbar from "../navbar/Navbar"
 function Layout({ children }) {
     return (
         <div className=''>
-            <Navbar />
+            <Navbar/>
             <div className=" min-h-screen  ">
                 {children}
             </div>
