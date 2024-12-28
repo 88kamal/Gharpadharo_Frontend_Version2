@@ -268,7 +268,7 @@ const AddRoom = () => {
         ))}
       </div>
 
-      {/* Vehicle Availability */}
+      {/* room Availability */}
       <div className="mb-4 flex flex-col sm:flex-row sm:items-center border border-indigo-400 rounded-md">
         <Checkbox
           label="Room Availability"

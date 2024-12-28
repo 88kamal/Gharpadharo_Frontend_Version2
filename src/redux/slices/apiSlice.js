@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_BACKEND_HOST_URL}/api/v2` }),
-  tagTypes: ["User","Accomodation","GetCity","Rooms"], // Ensure this line is here to define the tagTypes globally
+  tagTypes: ["User","Accomodation","GetCity","Rooms","Order"], // Ensure this line is here to define the tagTypes globally
   endpoints: (builder) => ({
 
   }), // Initially, we'll keep this empty

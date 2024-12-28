@@ -60,11 +60,36 @@ export const roomApi = apiSlice.injectEndpoints({
             refetchOnReconnect: true, // Refetch on reconnect
             refetchOnMountOrArgChange: true, // Refetch on remount or argument change
         }),
+        getRoomsByLoacationId: builder.query({
+            query: ({  localityId, page = 1, limit = 10,roomType}) => {
+                // Construct the query string with the provided parameters
+                const queryParams = new URLSearchParams();
+                queryParams.append('page', page);
+                queryParams.append('limit', limit);
+                queryParams.append('roomType',roomType)
+                console.log("Query Params in Request:", queryParams.toString());
+                
 
-
+                return `/accomodation/get-rooms-by-loctionId/${localityId}?${queryParams.toString()}`;
+            },
+            providesTags: ['Rooms'],
+            keepUnusedDataFor: 3600,
+            refetchOnFocus: true,
+            refetchOnReconnect: true,
+            refetchOnMountOrArgChange: true,
+        }),
+        getRoomById: builder.query({
+            query: (roomId) => `/accomodation/get-room-by-id/${roomId}`,
+            transformResponse: (data) => data || [],
+            providesTags: (result, error, id) => [{ type: 'Rooms', id }], // Use specific vehicle ID in cache
+            keepUnusedDataFor: 3600,
+            refetchOnFocus: true,
+            refetchOnReconnect: true,
+            refetchOnMountOrArgChange: true,
+        }),
     }),
 
     refetchOnReconnect: true,
 });
 
-export const { useAddRoomsMutation ,useGetRoomsByAccomodationIdQuery} = roomApi;
+export const { useAddRoomsMutation ,useGetRoomsByAccomodationIdQuery,useGetRoomsByLoacationIdQuery,useGetRoomByIdQuery} = roomApi;

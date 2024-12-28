@@ -4,9 +4,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Typography, Button, Spinner } from "@material-tailwind/react";
 import {
-  FaWifi,
-  FaWater,
-  FaShower,
   FaEdit,
   FaTrashAlt,
   FaCheckCircle,
@@ -16,13 +13,14 @@ import ro from "../../../assets/ro.png";
 import geyser from "../../../assets/geyser.png";
 import wifi from "../../../assets/wifi.png";
 // import roomavailable "../../../assets/roomavailable.png"
-import roomavailable from "../../../assets/roomavailable.png"
 import authService from "../../../services/authService";
+import { useNavigate } from "react-router-dom";
 
 const ViewRooms = ({ data, isLoading, error, setPage, setLimit }) => {
   const { rooms, totalRooms, currentPage, totalPages } = data || {}; // Ensure proper destructuring when data is undefined
 
-  const user=authService.getCurrentUser();
+  const user = authService.getCurrentUser();
+  const navigate = useNavigate();
 
   const handleNextPage = () => {
     if (currentPage < totalPages) setPage((prev) => prev + 1);
@@ -55,12 +53,25 @@ const ViewRooms = ({ data, isLoading, error, setPage, setLimit }) => {
   };
   // isLoading = true
   return (
-    <div className="border border-indigo-300 rounded-lg p-6">
-      <Typography className="text-3xl font-bold mb-8 text-center text-indigo-800">
-        Added Rooms
-      </Typography>
+    <div className="border-2 border-indigo-500 border-dashed rounded-lg p-4">
+      {user && [2, 14].includes(user?.role) && <div className="flex flex-col sm:flex-row justify-center text-center items-center rounded-lg p-4 bg-gradient-to-r from-blue-500 to-purple-600 shadow-xl">
+        <h1 className="text-3xl sm:text-4xl font-semibold text-white tracking-wider drop-shadow-lg">
+          Added Rooms
+        </h1>
+        <img className="h-10 w-10 sm:h-12 sm:w-12 ml-0 sm:ml-4 mt-2 sm:mt-0" src="https://cdn-icons-png.flaticon.com/128/578/578110.png" alt="" />
+      </div>}
 
-      <div className="border border-dashed  border-indigo-300 p-6 border-2">
+      {(!user || (user && ![2, 14].includes(user?.role))) && (
+        <div className="flex flex-col sm:flex-row justify-center text-center items-center rounded-lg p-4 bg-gradient-to-r from-blue-500 to-purple-600 shadow-xl">
+          <h1 className="text-3xl sm:text-4xl font-semibold text-white tracking-wider drop-shadow-lg">
+            Popular Rooms
+          </h1>
+          <img className="h-10 w-10 sm:h-12 sm:w-12 ml-0 sm:ml-4 mt-2 sm:mt-0" src="https://cdn-icons-png.flaticon.com/128/578/578110.png" alt="" />
+        </div>
+      )}
+
+
+      <div className="">
         {isLoading && (
           <div className="flex justify-center items-center h-full">
             <Spinner className="text-indigo-600" />
@@ -79,11 +90,11 @@ const ViewRooms = ({ data, isLoading, error, setPage, setLimit }) => {
         )}
 
         {!isLoading && !error && rooms?.length > 0 && (
-          <div className="grid border grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid mt-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {rooms.map((room) => (
               <div
                 key={room._id}
-                className="bg-white shadow-lg rounded-lg overflow-hidden border transform transition-all hover:scale-105"
+                className="bg-white shadow-md rounded-lg overflow-hidden border transition-transform transform hover:scale-105"
               >
                 <div className="relative">
                   <Slider {...carouselSettings} className="relative">
@@ -92,35 +103,23 @@ const ViewRooms = ({ data, isLoading, error, setPage, setLimit }) => {
                         <img
                           src={image.url}
                           alt={room.roomName}
-                          className="w-full h-48 object-cover"
+                          className="w-full h-40 object-cover"
                         />
                       </div>
                     ))}
                   </Slider>
                 </div>
                 <div className="p-4">
-                  <h2 className="text-lg text-indigo-700 font-bold mb-2">
-                    {room.roomName} - {room.roomType}
-                  </h2>
-                  <p className="text-sm text-gray-700 mb-2 font-medium">
-                    <span className="font-bold">Room-Details:</span>{" "}
-                    {room.roomDetails}
-                  </p>
-                  <p className="text-sm text-gray-700 font-medium">
-                    <span className="font-bold">Electricity:</span>{" "}
-                    {room.electricityBill}
-                  </p>
-
-                  <div className="grid grid-cols-2 gap-2 mt-4 mb-4">
-
+                  {/* Availability Icons Grid */}
+                  <div className="grid grid-cols-2 gap-3 mb-4">
                     <div
                       className={`relative flex items-center justify-center p-2 rounded-lg ${room.wifiAvailability ? "text-green-600" : "text-red-600"
                         }`}
                     >
-                      <img className="w-10 h-10" src={wifi} alt="" />
+                      <img className="w-8 h-8" src={wifi} alt="WiFi" />
                       {!room.wifiAvailability && (
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-black text-6xl font-bold  bg-opacity-10 px-2 rounded-full">
+                          <span className="text-black text-4xl">
                             <FcCancel />
                           </span>
                         </div>
@@ -130,10 +129,10 @@ const ViewRooms = ({ data, isLoading, error, setPage, setLimit }) => {
                       className={`relative flex items-center justify-center p-2 rounded-lg ${room.roAvailbility ? "text-green-600" : "text-red-600"
                         }`}
                     >
-                      <img className="w-10 h-10" src={ro} alt="" />
+                      <img className="w-8 h-8" src={ro} alt="RO" />
                       {!room.roAvailbility && (
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-black text-6xl font-bold  bg-opacity-10 px-2 rounded-full">
+                          <span className="text-black text-4xl">
                             <FcCancel />
                           </span>
                         </div>
@@ -143,72 +142,96 @@ const ViewRooms = ({ data, isLoading, error, setPage, setLimit }) => {
                       className={`relative flex items-center justify-center p-2 rounded-lg ${room.geyserAvailbility ? "text-green-600" : "text-red-600"
                         }`}
                     >
-                      <img className="w-10 h-10" src={geyser} alt="" />
+                      <img className="w-8 h-8" src={geyser} alt="Geyser" />
                       {!room.geyserAvailbility && (
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-black text-6xl font-bold  bg-opacity-10 px-2 rounded-full">
+                          <span className="text-black text-4xl">
                             <FcCancel />
                           </span>
                         </div>
                       )}
                     </div>
-
-
                     <div
                       className={`relative flex items-center justify-center p-2 rounded-lg ${room.roomAvailability ? "text-green-600" : "text-red-600"
                         }`}
                     >
-                      <img className="w-10 h-10" src={"https://cdn-icons-png.flaticon.com/128/15564/15564796.png"} alt="" />
-                      {!room.roomAvailability && (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-black text-6xl font-bold  bg-opacity-10 px-2 rounded-full">
-                            <FcCancel />
-                          </span>
-                        </div>
-                      )}
+                      <img
+                        className="w-8 h-8"
+                        src={
+                          room.roomAvailability
+                            ? "https://cdn-icons-png.flaticon.com/128/5619/5619956.png"
+                            : "https://cdn-icons-png.flaticon.com/128/5129/5129345.png"
+                        }
+                        alt="Room Availability"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Room Details */}
+                  <div className=" rounded-lg shadow-sm p-4 bg-white max-w-md">
+                    <h2 className="text-xl text-indigo-700 font-bold mb-3 truncate flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-5 h-5 mr-2 text-indigo-500" viewBox="0 0 24 24">
+                        <path d="M12 2a6 6 0 1 1-6 6 6 6 0 0 1 6-6zm0 10a8 8 0 0 0-8 8v2h16v-2a8 8 0 0 0-8-8z" />
+                      </svg>
+                      {room.roomName} - {room.accomodation.accomodationName}
+                    </h2>
+                    <div className="mb-3">
+                      <p className="text-sm text-gray-600 mb-1 leading-relaxed flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-4 h-4 mr-2 text-gray-500" viewBox="0 0 24 24">
+                          <path d="M19 2h-4a1 1 0 0 0-1 1v1H10V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v19a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zm-8 18H7v-2h4zm0-4H7v-2h4zm6 4h-4v-2h4zm0-4h-4v-2h4zm0-6H7V7h10zm0-4H7V3h10z" />
+                        </svg>
+                        <span className="font-medium">Room Price:</span> {room.roomPrice}
+                      </p>
+                      <p className="text-sm text-gray-600 mb-1 leading-relaxed flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-4 h-4 mr-2 text-gray-500" viewBox="0 0 24 24">
+                          <path d="M19 3h-1V1a1 1 0 0 0-2 0v2H8V1a1 1 0 0 0-2 0v2H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 15H6v-9h12zm0-11H6V5h12z" />
+                        </svg>
+                        <span className="font-medium">Room Type:</span> {room.roomType}
+                      </p>
+                      <p className="text-sm text-gray-600 leading-relaxed flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-4 h-4 mr-2 text-gray-500" viewBox="0 0 24 24">
+                          <path d="M12 2a8 8 0 1 0 8 8 8 8 0 0 0-8-8zm0 14a6 6 0 1 1 6-6 6 6 0 0 1-6 6zm0-10a4 4 0 1 0 4 4 4 4 0 0 0-4-4z" />
+                        </svg>
+                        <span className="font-medium">Location:</span> {room.roomLocality.localityName}
+                      </p>
                     </div>
                   </div>
 
 
-
-                  {[2,14].includes(user?.role) &&
-                    <>
-                      <div className="flex justify-between mt-4 border-t pt-4">
-                        <button
-                          onClick={() => handleEditRoom(room._id)}
-                          className="flex items-center justify-center   p-2"
-                        >
-                          <FaEdit size={20} />
-                        </button>
-                        <button
-                          onClick={() => handleChangeAvailability(room._id)}
-                          className="flex items-center justify-center p-2"
-                        >
-                          <FaCheckCircle size={20} />
-                        </button>
-                        <button
-                          onClick={() => handleDeleteRoom(room._id)}
-                          className="flex items-center justify-center p-2 "
-                        >
-                          <FaTrashAlt size={20} />
-                        </button>
-                      </div>
-                    </>}
-
-                  <div className="flex justify-between mt-4 border-t pt-4">
-                    <button
-                      // onClick={() => handleEditRoom(room._id)}
-                      className="flex items-center justify-center   p-2"
-                    >
-                      Book Now
-                    </button>
-                  </div>
-
-
+                  {/* Actions */}
+                  {user?.role === 2 || user?.role === 14 ? (
+                    <div className="flex justify-between mt-4 border-t pt-2">
+                      <button
+                        onClick={() => handleEditRoom(room._id)}
+                        className="text-indigo-600 hover:text-indigo-800"
+                      >
+                        <FaEdit size={18} />
+                      </button>
+                      <button
+                        onClick={() => handleChangeAvailability(room._id)}
+                        className="text-green-600 hover:text-green-800"
+                      >
+                        <FaCheckCircle size={18} />
+                      </button>
+                      <button
+                        onClick={() => handleDeleteRoom(room._id)}
+                        className="text-red-600 hover:text-red-800"
+                      >
+                        <FaTrashAlt size={18} />
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex justify-center mt-4 border-t pt-2">
+                      <button onClick={() => navigate(`/view-room/${room._id}`)} className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md shadow hover:bg-indigo-700 transition duration-150 ease-in-out">
+                      Explore Room
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
           </div>
+
         )}
 
         {!isLoading && !error && totalRooms > 0 && (

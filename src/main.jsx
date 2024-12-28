@@ -7,6 +7,7 @@ import { ThemeProvider } from "@material-tailwind/react";
 import App from "./App";
 import store from "./redux/store";
 import "./index.css";
+import MyState from "./context/myState";
 
 // Register the Service Worker
 // serviceWorkerRegistration.register();
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <ThemeProvider>
         <Router>
-          <App />
+          <MyState>
+            <App />
+          </MyState>
         </Router>
       </ThemeProvider>
     </Provider>

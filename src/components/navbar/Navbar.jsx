@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
     Navbar,
     Typography,
@@ -8,10 +8,12 @@ import {
     Menu,
     MenuHandler,
 } from "@material-tailwind/react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import ShareModal from "./ShareModal";
 import { FaUserCircle } from "react-icons/fa";
 import authService from "../../services/authService";
+import { useGetLocalitiesQuery } from "../../redux/slices/locationApiSlice";
+import myContext from "../../context/myContext";
 
 const rolePaths = {
     2: '/admin-dashboard/admin-home-page',
@@ -21,8 +23,36 @@ const rolePaths = {
 
 
 export default function Navbars() {
-    const [openNav, setOpenNav] = React.useState(false);
-    const [openServices, setOpenServices] = React.useState(false);
+    const [openNav, setOpenNav] = useState(false);
+    const [openServices, setOpenServices] = useState(false);
+
+    const {localityId, setLocality } = useContext(myContext);
+
+    const [selectedCityName, setSelectedCityName] = useState("");
+
+    const {
+        data: localities,
+        error: localitiesError,
+        isLoading: isLocalitiesLoading,
+    } = useGetLocalitiesQuery();
+
+    useEffect(() => {
+        if (localities && localities.length > 0) {
+            // Set default selected locality to the first item
+            setSelectedCityName(localities[0].localityName);
+            setLocality(localities[0]._id);
+        }
+    }, [localities]);
+
+    const handleCitySelect = (e) => {
+        const selectedOption = localities.find(
+            (loc) => loc.localityName === e.target.value
+        );
+        if (selectedOption) {
+            setSelectedCityName(selectedOption.localityName);
+            setLocality(selectedOption._id);
+        }
+    };
 
     const user = authService.getCurrentUser();
 
@@ -145,11 +175,26 @@ export default function Navbars() {
                                 className=' w-10 h-10' src="https://www.gharpadharo.com/img/gharpadharo.png"
                                 alt="logo"
                             />
-                                                        <span className="">GharPadharo</span>
+                            <span className="">GharPadharo</span>
 
                         </Typography>
                     </Link>
                     <div className="flex items-center gap-3 lg:gap-3">
+                        <div>
+                            <select
+                                id="locality-select"
+                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-indigo-400 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm 
+              bg-[#dddffc] text-gray-700 transition duration-200 ease-in-out"
+                                value={selectedCityName}
+                                onChange={handleCitySelect}
+                            >
+                                {localities?.map((locality) => (
+                                    <option key={locality._id} value={locality.localityName}>
+                                        {locality.localityName}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                         <div className="hidden lg:block">{navList}</div>
 
                         <Link to={'/list-property'}>
@@ -173,7 +218,7 @@ export default function Navbars() {
                             </div>
                         ) : (
                             <span className="text-black hover:text-gray-900 cursor-pointer hidden lg:block app-font">
-                               <Link to={'/login'}>Login</Link>
+                                <Link to={'/login'}>Login</Link>
                             </span>
                         )}
 

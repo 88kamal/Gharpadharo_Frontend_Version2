@@ -1,9 +1,21 @@
+import { useContext, useState } from "react";
+import ViewRooms from "../../components/common/rooms/ViewRooms";
 import Layout from "../../components/layout/Layout";
-import PopularRoom from "../../components/roomCard/PopularRoom";
+import myContext from "../../context/myContext";
+import { useGetRoomsByLoacationIdQuery } from "../../redux/slices/roomApiSlice";
+import Category from "../../components/common/rooms/Category";
+// import PopularRoom from "../../components/roomCard/PopularRoom";
 
 const HomePage = () => {
- 
-    
+
+    const { localityId, roomType } = useContext(myContext);
+
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(20);
+
+    const { data, isLoading, error } = useGetRoomsByLoacationIdQuery({ localityId, page, limit, roomType });
+
+    // console.log(roomType)
     return (
         <Layout>
 
@@ -13,10 +25,19 @@ const HomePage = () => {
                     <p className="text-lg text-white mb-6">Explore thousands of verified listings to find a home that fits your lifestyle.</p>
                 </div>
             </section>
-            
 
 
-    <PopularRoom/>
+
+            <div className="p-4">
+                <Category />
+            </div>
+
+
+            {/* <PopularRoom /> */}
+            <div className="p-4">
+                <ViewRooms data={data} isLoading={isLoading} error={error} setPage={setPage} setLimit={setLimit} />
+            </div>
+
 
             <section className="py-10">
                 <div className="container mx-auto px-4 text-center">
