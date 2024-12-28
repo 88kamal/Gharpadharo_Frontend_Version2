@@ -33,9 +33,23 @@ export const orderApiSlice = apiSlice.injectEndpoints({
       refetchOnReconnect: true,
       refetchOnFocus: true,
     }),
+    getOrders: builder.query({
+      query: () => ({
+        url: '/order/get-orders',
+        method: 'GET',
+        headers: {
+          "auth-token": JSON.parse(localStorage.getItem("token")),
+        },
+      }),
+      providesTags: ['Order'], // Provides Order tag for cache consistency
+      keepUnusedDataFor: 3600,
+      refetchOnMountOrArgChange: true,
+      refetchOnReconnect: true,
+      refetchOnFocus: true,
+    }),
     
     
   }),
 });
 
-export const { useCreateOrderMutation, useVerifyPaymentMutation } = orderApiSlice;
+export const { useCreateOrderMutation, useVerifyPaymentMutation,useGetOrdersQuery } = orderApiSlice;

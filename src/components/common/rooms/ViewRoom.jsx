@@ -6,6 +6,8 @@ import { useState } from "react";
 import { Button } from "@material-tailwind/react";
 import { TicketMinus } from "lucide-react";
 import { useCreateOrderMutation, useVerifyPaymentMutation } from "../../../redux/slices/orderSlice";
+import authService from "../../../services/authService";
+import toast from "react-hot-toast";
 
 function ViewRoom() {
     const { roomId } = useParams();
@@ -14,6 +16,10 @@ function ViewRoom() {
     const [verifyPayment] = useVerifyPaymentMutation();
     const navigate = useNavigate();
     const [slideImage, setSlideImage] = useState("");
+
+
+
+    const user=authService.getCurrentUser();
 
     const imageData = {
         image1: room?.roomImage[0]?.url,
@@ -61,16 +67,16 @@ function ViewRoom() {
                         }).unwrap();
     
                         if (verifyResponse.message === "Payment verified successfully") {
-                            alert("Payment successful! Room booked.");
-                            navigate("/");
+                            toast.success("Payment successful! Room booked.");
+                            navigate("/user-dashboard/user-dashboard");
                         } else {
-                            alert("Payment verification failed.");
+                            toast.error("Payment verification failed.");
                         }
                     },
                     prefill: {
-                        name: "Your Name",
-                        email: "your.email@example.com",
-                        contact: "9999999999",
+                        name: user.userName,
+                        email: user.userEmail,
+                        contact: user.contact,
                     },
                     theme: {
                         color: "#6C63FF",
@@ -81,8 +87,11 @@ function ViewRoom() {
                 rzp.open();
             };
         } catch (error) {
-            console.error("Error in payment:", error);
-            alert(error.message || "Payment failed. Please try again.");
+            console.error("Error in payment:", error.data.error);
+            if(error.data.error==="Access denied. Re-login"||error.data.error==="User not found"){
+                navigate('/login')
+            }
+            toast.error(error.data.error);
         }
     };
     

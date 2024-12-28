@@ -18,7 +18,7 @@ import myContext from "../../context/myContext";
 const rolePaths = {
     2: '/admin-dashboard/admin-home-page',
     14: '/shop-owner-dashboard/shop-owner-home-page',
-    15: '/user-dashboard/user-home-page'
+    15: '/user-dashboard/user-dashboard'
 };
 
 
@@ -74,8 +74,6 @@ export default function Navbars() {
                 { to: '/', label: 'Home' },
                 { to: '/about', label: 'About Us' },
                 { to: '/contact', label: 'Contact' },
-                { to: '/blog', label: 'Blog' },
-                { to: '/faqs', label: 'FAQs' },
             ].map((item, index) => {
                 if (item.submenu) {
                     return (
@@ -122,8 +120,6 @@ export default function Navbars() {
                 { to: '/', label: 'Home' },
                 { to: '/about', label: 'About Us' },
                 { to: '/contact', label: 'Contact' },
-                { to: '/blog', label: 'Blog' },
-                { to: '/faqs', label: 'FAQs' },
                 { to: '/list-property', label: 'List Property' },
             ].map((item, index) => {
                 return (
@@ -179,7 +175,7 @@ export default function Navbars() {
 
                         </Typography>
                     </Link>
-                    <div className="flex items-center gap-3 lg:gap-3">
+                    <div className="flex ml-4 items-center gap-3 lg:gap-3">
                         <div>
                             <select
                                 id="locality-select"
@@ -226,7 +222,7 @@ export default function Navbars() {
 
                         <IconButton
                             variant=""
-                            className="ml-auto h-10 w-10 text-inherit rounded-lg border-green-400 lg:hidden bg-white border shadow-none hover:shadow-none"
+                            className="ml-auto h-10 w-10 text-inherit rounded-lg border-indigo-400 lg:hidden bg-white border shadow-none hover:shadow-none"
                             ripple={false}
                             onClick={() => setOpenNav(!openNav)}
                         >

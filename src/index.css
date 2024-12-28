@@ -9,3 +9,61 @@
 .slick-prev:before, .slick-next:before {
     color: #1976d2; /* Adjust arrow color */
 }
+
+
+/* CSS Styles */
+/* Add this in your CSS file or inside a <style> tag if using inline styles */
+
+/* Basic container styling */
+.order-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  justify-content: center;
+}
+
+/* Individual order card styling */
+.order-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: 300px;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Room details section */
+.room-details {
+  margin-top: 16px;
+}
+
+/* Room images */
+.room-images {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.room-image {
+  width: 100%;
+  max-width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Loading and error messages */
+.loading,
+.error,
+.no-orders {
+  text-align: center;
+  margin: 16px 0;
+  font-size: 18px;
+  color: #333;
+}

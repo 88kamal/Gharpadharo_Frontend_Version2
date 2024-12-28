@@ -1,6 +1,8 @@
+import UserProfile from "../../../../components/common/userProfile/UserProfile"
+
 const UserProfilePage = () => {
   return (
-    <div>UserProfilePage</div>
+    <div><UserProfile/></div>
   )
 }
 

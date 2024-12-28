@@ -1,6 +1,10 @@
+import UserOrder from "../../../../components/common/order/UserOrder"
+import { useGetOrdersQuery } from "../../../../redux/slices/orderSlice";
+
 const UserRoomBookingPage = () => {
+  const { data: orders, isLoading, isError } = useGetOrdersQuery();
   return (
-    <div>UserRoomBookingPage</div>
+    <div><UserOrder orders={orders} isLoading={isLoading} isError={isError}/></div>
   )
 }
 

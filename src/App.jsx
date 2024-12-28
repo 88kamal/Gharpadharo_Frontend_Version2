@@ -28,6 +28,7 @@ import RoomOwnerAddRoomPage from "./pages/dashboard/roomOwner/pages/RoomOwnerAdd
 import RoomOwnerAllRoomPage from "./pages/dashboard/roomOwner/pages/RoomOwnerAllRoomPage";
 import AdminViewAllRoomsOfAccomodationOwner from "./pages/dashboard/admin/pages/AdminViewAllRoomsOfAccomodationOwner";
 import ViewRoom from "./components/common/rooms/ViewRoom";
+import UserRoomBookingPage from "./pages/dashboard/user/pages/UserRoomBookingPage";
 
 
 function App() {
@@ -104,14 +105,8 @@ function App() {
             }>
 
             <Route
-              index={true}
-              path="user-home-page"
-              element={<UserHomePage />}
-            />
-
-            <Route
-              path="user-view-book-romm"
-              element={<ShowAllRoomPage />}
+              path="user-dashboard"
+              element={<UserRoomBookingPage />}
             />
 
             <Route

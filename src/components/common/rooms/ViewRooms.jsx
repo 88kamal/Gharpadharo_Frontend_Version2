@@ -73,7 +73,7 @@ const ViewRooms = ({ data, isLoading, error, setPage, setLimit }) => {
 
       <div className="">
         {isLoading && (
-          <div className="flex justify-center items-center h-full">
+          <div className="flex justify-center items-center mt-8 h-full">
             <Spinner className="text-indigo-600" />
           </div>
         )}
