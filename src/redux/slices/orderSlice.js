@@ -48,8 +48,37 @@ export const orderApiSlice = apiSlice.injectEndpoints({
       refetchOnFocus: true,
     }),
     
+    getOrdersByAccomodation: builder.query({
+      query: ({ accomodationId, status, startDate, endDate, limit = 10, page = 1 }) => {
+        // Build the query string dynamically
+        const queryParams = new URLSearchParams();
+        if (startDate) queryParams.append('startDate', startDate);
+        if (endDate) queryParams.append('endDate', endDate);
+        if (status) queryParams.append('status', status);
+        queryParams.append('limit', limit);
+        queryParams.append('page', page);
+    
+        return {
+          url: `/order/get-orders/${accomodationId}?${queryParams.toString()}`, // Corrected the route parameter casing
+          headers: {
+            "auth-token": localStorage.getItem("token"), // No need to parse JSON for a simple token string
+          },
+        };
+      },
+      providesTags: (result) =>
+        result?.orders
+          ? result.orders.map(({ _id }) => ({ type: 'Orders', id: _id }))
+          : [{ type: 'Orders', id: 'LIST' }], // Ensure a stable tag for invalidation
+      keepUnusedDataFor: 60, // Cache duration
+      refetchOnFocus: true,
+      refetchOnReconnect: true,
+      refetchOnMountOrArgChange: true,
+    }),
+    
+    
+    
     
   }),
 });
 
-export const { useCreateOrderMutation, useVerifyPaymentMutation,useGetOrdersQuery } = orderApiSlice;
+export const { useCreateOrderMutation, useVerifyPaymentMutation,useGetOrdersQuery,useGetOrdersByAccomodationQuery } = orderApiSlice;

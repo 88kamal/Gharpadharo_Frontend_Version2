@@ -17,7 +17,7 @@ import myContext from "../../context/myContext";
 
 const rolePaths = {
     2: '/admin-dashboard/admin-home-page',
-    14: '/shop-owner-dashboard/shop-owner-home-page',
+    14: '/room-owner-dashboard/room-owner-home-page',
     15: '/user-dashboard/user-dashboard'
 };
 

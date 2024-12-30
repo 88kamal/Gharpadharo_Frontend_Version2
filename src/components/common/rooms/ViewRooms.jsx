@@ -7,6 +7,7 @@ import {
   FaEdit,
   FaTrashAlt,
   FaCheckCircle,
+  FaEye,
 } from "react-icons/fa";
 import { FcCancel } from "react-icons/fc";
 import ro from "../../../assets/ro.png";
@@ -218,6 +219,13 @@ const ViewRooms = ({ data, isLoading, error, setPage, setLimit }) => {
                         className="text-red-600 hover:text-red-800"
                       >
                         <FaTrashAlt size={18} />
+                      </button>
+
+                      <button
+                        onClick={() => navigate(`/room-owner-dashboard/room-owner-view-all-book-room/room-owner-viewRoom/${room._id}`)}
+                        className="text-indigo-600 hover:text-indigo-800"
+                      >
+                        <FaEye  size={18} />
                       </button>
                     </div>
                   ) : (
