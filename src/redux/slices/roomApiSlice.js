@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import apiSlice from "./apiSlice";
 
+
 export const roomApi = apiSlice.injectEndpoints({
     tagTypes: ['Rooms'], // Define the tag type for caching and invalidation
     endpoints: (builder) => ({
