@@ -168,7 +168,7 @@ export default function Navbars() {
                             className="mr-4 cursor-pointer py-1.5 text-xl font-bold flex gap-2 items-center"
                         >
                             <img
-                                className=' w-10 h-10' src="https://www.gharpadharo.com/img/gharpadharo.png"
+                                className=' w-10 h-10' src="../../img/gharpadharo.png"
                                 alt="logo"
                             />
                             <span className="">GharPadharo</span>
