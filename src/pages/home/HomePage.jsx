@@ -4,6 +4,7 @@ import Layout from "../../components/layout/Layout";
 import myContext from "../../context/myContext";
 import { useGetRoomsByLoacationIdQuery } from "../../redux/slices/roomApiSlice";
 import Category from "../../components/common/rooms/Category";
+import HeroSection from "../../components/hero/HeroSection";
 // import PopularRoom from "../../components/roomCard/PopularRoom";
 
 const HomePage = () => {
@@ -19,13 +20,8 @@ const HomePage = () => {
     return (
         <Layout>
 
-            <section className="hero bg-indigo-400 py-20 text-center">
-                <div className="container mx-auto px-4">
-                    <h2 className="text-4xl font-bold mb-4 text-white">Find Your Perfect Rental, PG, or Flat</h2>
-                    <p className="text-lg text-white mb-6">Explore thousands of verified listings to find a home that fits your lifestyle.</p>
-                </div>
-            </section>
-
+           
+<HeroSection/>
 
 
             <div className="p-4">
