@@ -31,11 +31,13 @@ import ViewRoom from "./components/common/rooms/ViewRoom";
 import UserRoomBookingPage from "./pages/dashboard/user/pages/UserRoomBookingPage";
 import RoomOwnerViewRoom from "./pages/dashboard/roomOwner/pages/RoomOwnerViewRoom";
 import RoomOwnerHomePage from "./pages/dashboard/roomOwner/pages/RoomOwnerHomePage";
+import ScrollTop from "./components/scrollTop/ScrollTop";
 
 
 function App() {
   return (
     <div className="App">
+        <ScrollTop/>
 
       <Routes>
         <Route path="/" element={<HomePage />} />
