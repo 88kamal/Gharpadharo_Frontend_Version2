@@ -179,7 +179,7 @@ export default function Navbars() {
                         <div>
                             <select
                                 id="locality-select"
-                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-indigo-400 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm 
+                                className="mt-1 block w-28 lg:w-full pl-3 pr-0 py-2 text-base border border-indigo-400 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm 
               bg-[#dddffc] text-gray-700 transition duration-200 ease-in-out"
                                 value={selectedCityName}
                                 onChange={handleCitySelect}
