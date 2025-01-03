@@ -10,7 +10,6 @@ export const accomodationApi = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: accomodationData,
                 formData: true,
-                credentials : true
             }),
             onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
                 // Optimistic cache update: patch the shop list before the mutation completes
