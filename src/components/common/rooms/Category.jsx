@@ -24,16 +24,16 @@ const data = [
     value:"1bhk",
     image: "https://i.pinimg.com/736x/80/c5/44/80c54460304c94a781de1d63db97bdb3.jpg"
   },
-  {
-    name: "2BHK",
-    value:"2bhk",
-    image: "https://i.pinimg.com/736x/fd/32/08/fd3208c4ea748dabb6d9d0eaf26514d1.jpg"
-  },
-  {
-    name: "3BHK",
-    value:"3bhk",
-    image: "https://i.pinimg.com/736x/76/4c/f8/764cf8eee4c471f1d5042b62aed0ecc7.jpg"
-  }
+  // {
+  //   name: "2BHK",
+  //   value:"2bhk",
+  //   image: "https://i.pinimg.com/736x/fd/32/08/fd3208c4ea748dabb6d9d0eaf26514d1.jpg"
+  // },
+  // {
+  //   name: "3BHK",
+  //   value:"3bhk",
+  //   image: "https://i.pinimg.com/736x/76/4c/f8/764cf8eee4c471f1d5042b62aed0ecc7.jpg"
+  // }
 ];
 
 const Category = () => {
