@@ -50,7 +50,7 @@ function ViewRoom() {
     
             script.onload = () => {
                 const options = {
-                    key: "rzp_test_g5AsFWLIQ1qm2L", // Razorpay API Key
+                    key: "rzp_live_SetXGg9V3Pm0GJ", // Razorpay API Key
                     amount: amount,
                     currency: currency,
                     name: "Room Booking",
