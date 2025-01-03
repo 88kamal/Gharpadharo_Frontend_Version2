@@ -7,32 +7,32 @@ const data = [
   {
     name: "All",
     value:"",
-    image: "https://cdn-icons-png.flaticon.com/128/562/562460.png"
+    image: "https://i.pinimg.com/736x/bf/ef/6a/bfef6ac73d1eab0d4072f3a2c69aa9da.jpg"
   },
   {
-    name: "1R",
+    name: "PG",
     value:"1r",
-    image: "https://cdn-icons-png.flaticon.com/128/578/578110.png"
+    image: "https://i.pinimg.com/736x/17/46/00/17460046cb5b0784511ae6609e79a864.jpg"
   },
   {
-    name: "1RK",
+    name: "Hostel",
     value:"1rk",
-    image: "https://cdn-icons-png.flaticon.com/128/2341/2341111.png"
+    image: "https://i.pinimg.com/736x/15/81/49/158149aca0cf2e2eaa75c5cf3b623c55.jpg"
   },
   {
-    name: "1BHK",
+    name: "Flats",
     value:"1bhk",
-    image: "https://cdn-icons-png.flaticon.com/128/1207/1207121.png"
+    image: "https://i.pinimg.com/736x/80/c5/44/80c54460304c94a781de1d63db97bdb3.jpg"
   },
   {
     name: "2BHK",
     value:"2bhk",
-    image: "https://cdn-icons-png.flaticon.com/128/10365/10365088.png"
+    image: "https://i.pinimg.com/736x/fd/32/08/fd3208c4ea748dabb6d9d0eaf26514d1.jpg"
   },
   {
     name: "3BHK",
     value:"3bhk",
-    image: "https://cdn-icons-png.flaticon.com/128/14321/14321298.png"
+    image: "https://i.pinimg.com/736x/76/4c/f8/764cf8eee4c471f1d5042b62aed0ecc7.jpg"
   }
 ];
 
@@ -55,7 +55,7 @@ const Category = () => {
               }}
             >
               <LazyLoadImage
-                className="rounded-full w-12 lg:w-24 h-10 lg:h-20"
+                className="rounded-full w-12 lg:w-24 h-10 lg:h-24"
                 src={item.image}
                 alt={item.name}
                 effect="opacity"
