@@ -32,6 +32,8 @@ import UserRoomBookingPage from "./pages/dashboard/user/pages/UserRoomBookingPag
 import RoomOwnerViewRoom from "./pages/dashboard/roomOwner/pages/RoomOwnerViewRoom";
 import RoomOwnerHomePage from "./pages/dashboard/roomOwner/pages/RoomOwnerHomePage";
 import ScrollTop from "./components/scrollTop/ScrollTop";
+import RefundPolicy from "./pages/company/RefundPolicy";
+import PrivacyPolicy from "./pages/company/PrivacyPolicy";
 
 
 function App() {
@@ -48,7 +50,8 @@ function App() {
         <Route path="/list-property" element={<ListPropertyPage />} />
         <Route path="/view-room/:roomId" element={<ViewRoom />} />
         <Route path="/*" element={<NoPage />} />
-
+        <Route path="/refund-policy" element={<RefundPolicy />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
         <>
           <Route

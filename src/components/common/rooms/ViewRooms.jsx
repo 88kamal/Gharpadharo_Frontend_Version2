@@ -59,7 +59,7 @@ const ViewRooms = ({ data, isLoading, error, setPage, setLimit }) => {
         <h1 className="text-3xl sm:text-4xl font-semibold text-white tracking-wider drop-shadow-lg">
           Added Rooms
         </h1>
-        <img className="h-10 w-10 sm:h-12 sm:w-12 ml-0 sm:ml-4 mt-2 sm:mt-0" src="https://cdn-icons-png.flaticon.com/128/578/578110.png" alt="" />
+        <img  className="h-10 w-10 sm:h-12 sm:w-12 ml-0 sm:ml-4 mt-2 sm:mt-0" src="https://cdn-icons-png.flaticon.com/128/578/578110.png" alt="" />
       </div>}
 
       {(!user || (user && ![2, 14].includes(user?.role))) && (
@@ -102,9 +102,10 @@ const ViewRooms = ({ data, isLoading, error, setPage, setLimit }) => {
                     {room.roomImage.map((image) => (
                       <div key={image._id}>
                         <img
+                        onClick={() => navigate(`/view-room/${room._id}`)}
                           src={image.url}
                           alt={room.roomName}
-                          className="w-full h-40 object-cover"
+                          className="w-full h-40 object-cover cursor-pointer"
                         />
                       </div>
                     ))}
