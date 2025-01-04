@@ -9,7 +9,7 @@ function HeroSection() {
             <div className=" mx-3 my-3">
                 <HeroSectionForDesktop />
             </div>
-email id batao?? shriram2002singh@gmail.com
+
 
 
 
