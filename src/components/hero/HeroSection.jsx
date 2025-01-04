@@ -36,11 +36,18 @@ const HeroSectionForDesktop = () => {
 
 
                 <img loading="lazy"
-                    src="../banner/banner1Light.png"
+                    src="../banner/1.jpg"
                     alt="image 1"
                     className="w-[100%] h-[11em] xl:h-[30em] lg:h-[18em] md:h-[20em] sm:h-[12em] "
-                />  <img
-                    src="../banner/banner1Light.png"
+                /> 
+                 <img
+                    src="../banner/2.jpg"
+                    alt="image 1"
+                    className="w-[100%] h-[11em] xl:h-[30em] lg:h-[18em] md:h-[20em] sm:h-[12em] "
+                />
+
+<img
+                    src="../banner/3.jpg"
                     alt="image 1"
                     className="w-[100%] h-[11em] xl:h-[30em] lg:h-[18em] md:h-[20em] sm:h-[12em] "
                 />
