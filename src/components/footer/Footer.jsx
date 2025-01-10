@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaFacebook, FaLinkedin, FaWhatsapp, FaInstagram } from "react-icons/fa";
 
+
 const Footer = () => {
   return (
     // <div>
@@ -199,11 +200,11 @@ const Footer = () => {
 
 
               <li>
-                <a href="#" title="" class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Terms & Conditions </a>
+                <a href="/refundpolicy" title="" class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Refund Policy </a>
               </li>
 
               <li>
-                <a href="#" title="" class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Privacy Policy </a>
+                <a href="/privacypolicy" title="" class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Privacy Policy </a>
               </li>
             </ul>
           </div>

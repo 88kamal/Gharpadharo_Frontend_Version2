@@ -35,6 +35,9 @@ import ScrollTop from "./components/scrollTop/ScrollTop";
 import Footer from "./components/footer/Footer";
 import Pricing from "./pages/pricing/pricing";
 import Features from "./features/Features";
+import RefundPolicy from "./pages/company/RefundPolicy";
+import PrivacyPolicy from "./pages/company/PrivacyPolicy";
+
 
 
 function App() {
@@ -53,6 +56,9 @@ function App() {
         <Route path="/list-property" element={<ListPropertyPage />} />
         <Route path="/view-room/:roomId" element={<ViewRoom />} />
         <Route path="/*" element={<NoPage />} />
+        <Route path="/refundpolicy" element={<RefundPolicy/>}/>
+        <Route path ="privacypolicy" element={<PrivacyPolicy/>}/>
+
 
 
         <>
