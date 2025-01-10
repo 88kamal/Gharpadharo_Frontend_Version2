@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import Footer from "../footer/Footer"
+// import Footer from "../footer/Footer"
 import Navbar from "../navbar/Navbar"
 
 function Layout({ children }) {
@@ -9,7 +9,7 @@ function Layout({ children }) {
             <div className=" min-h-screen  ">
                 {children}
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div >
     )
 }

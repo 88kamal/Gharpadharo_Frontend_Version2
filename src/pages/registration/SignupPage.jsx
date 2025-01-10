@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSignUpUserMutation } from "../../redux/slices/userApiSlice";
+import Navbars from "../../components/navbar/Navbar";
 
 const SignupPage = () => {
     const [formData, setFormData] = useState({
@@ -46,12 +47,24 @@ const SignupPage = () => {
 
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
+        <>  
+        <Navbars/>
+   
+        <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4"
+         style={{
+                    
+            marginTop : '-120px',
+            marginBottom : '-130px',
+            backgroundColor : '#dddffc'
+        }}
+        
+        
+        >
             {/* main div  */}
             {/* <pre>{JSON.stringify(formData, null, 2)}</pre> */}
             <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
                 {/* Heading  */}
-                <h2 className="text-xl font-semibold text-center mb-6">Signup Business</h2>
+                <h2 className="text-xl font-semibold text-center mb-6">Signup </h2>
                 {/* form  */}
                 <div className="space-y-4" >
 
@@ -131,6 +144,7 @@ const SignupPage = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

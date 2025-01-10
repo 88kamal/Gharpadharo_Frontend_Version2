@@ -26,7 +26,7 @@ export default function Navbars() {
     const [openNav, setOpenNav] = useState(false);
     const [openServices, setOpenServices] = useState(false);
 
-    const {localityId, setLocality } = useContext(myContext);
+    const { localityId, setLocality } = useContext(myContext);
 
     const [selectedCityName, setSelectedCityName] = useState("");
 
@@ -69,11 +69,13 @@ export default function Navbars() {
     }, []);
 
     const navList = (
-        <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-1">
+        <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-1  text-black">
             {[
                 { to: '/', label: 'Home' },
                 { to: '/about', label: 'About Us' },
                 { to: '/contact', label: 'Contact' },
+                { to: '/features', label: 'Featues'},
+                {to: '/pricing', label :"Pricing"},
             ].map((item, index) => {
                 if (item.submenu) {
                     return (
@@ -176,10 +178,10 @@ export default function Navbars() {
                         </Typography>
                     </Link>
                     <div className="flex ml-4 items-center gap-3 lg:gap-3">
-                        <div>
+                         {/* <div>
                             <select
                                 id="locality-select"
-                                className="mt-1 block w-28 lg:w-full pl-3 pr-0 py-2 text-base border border-indigo-400 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm 
+                                className="mt-1 block w-35 lg:w-full pl-3 pr-0 py-2 text-base border border-indigo-400 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm 
               bg-[#dddffc] text-gray-700 transition duration-200 ease-in-out"
                                 value={selectedCityName}
                                 onChange={handleCitySelect}
@@ -190,7 +192,9 @@ export default function Navbars() {
                                     </option>
                                 ))}
                             </select>
-                        </div>
+                        </div>  */}
+
+
                         <div className="hidden lg:block">{navList}</div>
 
                         <Link to={'/list-property'}>

@@ -1,0 +1,123 @@
+/* General Styling */
+.search-component {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 10px 15px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Location Input Section */
+.search-location {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 8px;
+}
+
+.location-input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+}
+
+.location-input::placeholder {
+  color: #999;
+}
+
+.add-more {
+  font-size: 14px;
+  color: #999;
+  cursor: pointer;
+}
+
+/* Occupancy and Budget Sections */
+.search-occupancy,
+.search-budget {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.dropdown-button {
+  border: none;
+  background: none;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Dropdown Menu */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 120px;
+  max-height: 200px;  /* Make the dropdown scrollable */
+  overflow-y: auto;   /* Add scroll */
+  z-index: 10;
+}
+
+.dropdown-item {
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f7f7f7;
+}
+
+/* Divider */
+.divider {
+  width: 1px;
+  height: 25px;
+  background-color: #dddffc;
+}
+
+/* Search Button */
+.search-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dddffc;
+  color:black;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* .search-button:hover {
+  background-color: #d62828;
+} */
+
+/* Icon Styling */
+.icon {
+  font-size: 18px;
+  color: #999;
+}

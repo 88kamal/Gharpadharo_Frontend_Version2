@@ -2,24 +2,24 @@ import { useNavigate } from "react-router-dom";
 
 const data = [
     {
-        name: "rental",
+        name: "Rental",
         image: "https://i.pinimg.com/564x/88/46/bb/8846bb8d55b690b958a202c7ff995e4c.jpg"
     },
     {
-        name: "pg",
+        name: "PG",
         image: "https://i.pinimg.com/564x/7c/5a/12/7c5a12d215ddc2252e156040a3282781.jpg"
     },
     {
-        name: "hostel",
+        name: "Hostel",
         image: "https://i.pinimg.com/564x/e5/f7/82/e5f7827f993358de487ce66b01d2dd1f.jpg"
     },
     {
-        name: "flats",
+        name: "Flats",
         image: "https://i.pinimg.com/564x/e7/74/51/e77451aa8e3cc20aa4b03a0bb5f4a021.jpg"
     }
 ]
 
-const AccomodationCategory = () => {
+const AccomodationCategory = () => { 
     const navigate = useNavigate();
     return (
         <div>

@@ -59,13 +59,13 @@ const ViewRooms = ({ data, isLoading, error, setPage, setLimit }) => {
         <h1 className="text-3xl sm:text-4xl font-semibold text-white tracking-wider drop-shadow-lg">
           Added Rooms
         </h1>
-        <img  className="h-10 w-10 sm:h-12 sm:w-12 ml-0 sm:ml-4 mt-2 sm:mt-0" src="https://cdn-icons-png.flaticon.com/128/578/578110.png" alt="" />
+        <img className="h-10 w-10 sm:h-12 sm:w-12 ml-0 sm:ml-4 mt-2 sm:mt-0" src="https://cdn-icons-png.flaticon.com/128/578/578110.png" alt="" />
       </div>}
 
       {(!user || (user && ![2, 14].includes(user?.role))) && (
         <div className="flex flex-col sm:flex-row justify-center text-center items-center rounded-lg p-4 bg-gradient-to-r from-blue-500 to-purple-600 shadow-xl">
           <h1 className="text-3xl sm:text-4xl font-semibold text-white tracking-wider drop-shadow-lg">
-            Popular Rooms
+            Popular Rooms 
           </h1>
           <img className="h-10 w-10 sm:h-12 sm:w-12 ml-0 sm:ml-4 mt-2 sm:mt-0" src="https://cdn-icons-png.flaticon.com/128/578/578110.png" alt="" />
         </div>
@@ -102,10 +102,9 @@ const ViewRooms = ({ data, isLoading, error, setPage, setLimit }) => {
                     {room.roomImage.map((image) => (
                       <div key={image._id}>
                         <img
-                        onClick={() => navigate(`/view-room/${room._id}`)}
                           src={image.url}
                           alt={room.roomName}
-                          className="w-full h-40 object-cover cursor-pointer"
+                          className="w-full h-40 object-cover"
                         />
                       </div>
                     ))}

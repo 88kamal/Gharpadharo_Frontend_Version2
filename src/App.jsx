@@ -32,8 +32,9 @@ import UserRoomBookingPage from "./pages/dashboard/user/pages/UserRoomBookingPag
 import RoomOwnerViewRoom from "./pages/dashboard/roomOwner/pages/RoomOwnerViewRoom";
 import RoomOwnerHomePage from "./pages/dashboard/roomOwner/pages/RoomOwnerHomePage";
 import ScrollTop from "./components/scrollTop/ScrollTop";
-import RefundPolicy from "./pages/company/RefundPolicy";
-import PrivacyPolicy from "./pages/company/PrivacyPolicy";
+import Footer from "./components/footer/Footer";
+import Pricing from "./pages/pricing/pricing";
+import Features from "./features/Features";
 
 
 function App() {
@@ -47,11 +48,12 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path ="pricing" element={<Pricing />} />
+        <Route path ="features" element={<Features/>}/>
         <Route path="/list-property" element={<ListPropertyPage />} />
         <Route path="/view-room/:roomId" element={<ViewRoom />} />
         <Route path="/*" element={<NoPage />} />
-        <Route path="/refund-policy" element={<RefundPolicy />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
 
         <>
           <Route
@@ -171,6 +173,7 @@ function App() {
         </>
       </Routes>
       <Toaster />
+      <Footer/>
 
     </div>
   )

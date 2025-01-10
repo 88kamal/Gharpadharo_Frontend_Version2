@@ -200,15 +200,15 @@ const ListPropertyPage = () => {
 
   useEffect(() => {
     if (addAccomodationError) {
-        // toast.error(addShopError?.data?.error || 'Something went wrong!');
-        toast.error(addAccomodationError?.data?.error || 'Something went wrong!', "error")
+      // toast.error(addShopError?.data?.error || 'Something went wrong!');
+      toast.error(addAccomodationError?.data?.error || 'Something went wrong!', "error")
 
     }
 
     if (isSuccess) {
-        navigate('/login')
+      navigate('/login')
     }
-}, [addAccomodationError, isSuccess]);
+  }, [addAccomodationError, isSuccess]);
 
 
 
@@ -218,8 +218,8 @@ const ListPropertyPage = () => {
     <Layout>
       <div className="main flex flex-wrap justify-between bg-primary/10">
         {/*----------------------------------------------------------------------------left part---------------------------------------------- */}
-        <div className="left w-full bg-indigo-300 md:w-1/2 p-5">
-          <div className="">
+        {/* <div className="left w-full bg-indigo-300 md:w-1/2 p-5">
+          <div className="">  
             <div className="p-2">
               <img
                 className="h-72 lg:h-[30em] w-full mb-4 rounded-md"
@@ -253,12 +253,143 @@ const ListPropertyPage = () => {
               </div>
             </section>
           </div>
+        </div> */}
+
+        <div className="left w-full bg-indigo-50 md:w-1/2 p-6">
+          <div className="text-center p-4">
+            <h1 className="text-4xl font-semibold text-gray-900 mb-6">
+              Rent Your Property Faster with <span className="text-blue-500">GharPhadaro.com</span>
+            </h1>
+            <div className="p-2">
+              <img
+                className="h-50 lg:h-[30em] w-full mb-12 rounded-lg shadow-lg border-25 border-[#dddffc]"
+                src={listing}
+                alt="Property Listing"
+              />
+            </div>
+
+            <section className="py-10">
+              <div className="container mx-auto px-4 text-center">
+                {/* <h3 className="text-4xl font-extrabold text-indigo-800 mb-8">
+                  <br>
+                  </br>
+                  Why Choose GharPadharo?
+                </h3> */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                  {/* Card 1 */}
+                  {/* <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div className="flex items-center justify-center mb-4">
+                      <img
+                        src="https://img.icons8.com/fluency/48/verified-account.png"
+                        alt="Verified Tenants"
+                        className="h-12 w-12"
+                      />
+                    </div>
+                    <h4 className="font-semibold text-xl text-indigo-700 mb-4">
+                      Reach Verified Tenants
+                    </h4>
+                    <p className="text-gray-600">
+                      Access a wide pool of verified tenants actively searching for properties like yours.
+                    </p>
+                  </div> */}
+
+                  {/* Card 2 */}
+                  {/* <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div className="flex items-center justify-center mb-4">
+                      <img
+                        src="https://img.icons8.com/fluency/48/home-page.png"
+                        alt="Effortless Management"
+                        className="h-12 w-12"
+                      />
+                    </div>
+                    <h4 className="font-semibold text-xl text-indigo-700 mb-4">
+                      Effortless Property Management
+                    </h4>
+                    <p className="text-gray-600">
+                      Manage your listings, availability, and inquiries seamlessly with our intuitive platform.
+                    </p>
+                  </div> */}
+
+                  {/* Card 3 */}
+                  {/* <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div className="flex items-center justify-center mb-4">
+                      <img
+                        src="https://img.icons8.com/fluency/48/visible.png"
+                        alt="Visibility"
+                        className="h-12 w-12"
+                      />
+                    </div>
+                    <h4 className="font-semibold text-xl text-indigo-700 mb-4">
+                      Maximized Visibility
+                    </h4>
+                    <p className="text-gray-600">
+                      Showcase your property to thousands of potential tenants and increase your occupancy rate.
+                    </p>
+                  </div> */}
+
+                  {/* Card 4 */}
+                  {/* <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div className="flex items-center justify-center mb-4">
+                      <img
+                        src="https://img.icons8.com/fluency/48/contract.png"
+                        alt="Fair Contracts"
+                        className="h-12 w-12"
+                      />
+                    </div>
+                    <h4 className="font-semibold text-xl text-indigo-700 mb-4">
+                      Transparent Contracts
+                    </h4>
+                    <p className="text-gray-600">
+                      Experience clear and hassle-free agreements with no hidden fees.
+                    </p>
+                  </div> */}
+
+                  {/* Card 5 */}
+                  {/* <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div className="flex items-center justify-center mb-4">
+                      <img
+                        src="https://img.icons8.com/fluency/48/customer-support.png"
+                        alt="Support"
+                        className="h-12 w-12"
+                      />
+                    </div>
+                    <h4 className="font-semibold text-xl text-indigo-700 mb-4">
+                      24/7 Customer Support
+                    </h4>
+                    <p className="text-gray-600">
+                      Get round-the-clock assistance for any queries or issues.
+                    </p>
+                  </div> */}
+
+                  {/* Card 6 */}
+                  {/* <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out">
+                    <img
+                      src="https://img.icons8.com/fluency/48/discount.png"
+
+                      alt="Affordable Pricing"
+                      className="h-12 w-12"
+                    />
+
+                    <h4 className="font-semibold text-xl text-indigo-700 mb-4">
+                      Affordable Pricing
+                    </h4>
+                    <p className="text-gray-600">
+                      List your property or find tenants at the best possible rates.
+                    </p>
+                  </div> */}
+                </div>  
+              </div>
+            </section>
+          </div>
         </div>
+
+
+
 
         {/*----------------------------------------------------------------------------Right part---------------------------------------------- */}
 
         <div className="left w-full md:w-1/2">
-          <div className="bg-indigo-200 p-5 h-[75em]">
+          <div className="bg-indigo-50 p-5 h-[75em]">
 
             {/* ------------------------------------------------------------------top of right side ---------------------------------------------*/}
             <div className="text-center mb-8">
@@ -270,14 +401,15 @@ const ListPropertyPage = () => {
                 />
               </div>
               <h2 className="text-2xl font-semibold text-gray-800">
-                List Your Accomodation With Gharpadharo
+                {/* Start posting your property with GharPhadaro, it is free */}
+                Free property listing on GharPhadaro!
               </h2>
             </div>
 
 
             {/* ------------------------------------------------------------form starts from here -----------------------------------------------*/}
             <form className="space-y-4"
-              onSubmit={handleSubmit} 
+              onSubmit={handleSubmit}
               encType="multipart/form-data">
 
               {/* <pre>{JSON.stringify(formData, null, 2)}</pre> */}
@@ -538,8 +670,6 @@ const ListPropertyPage = () => {
                 </Button>
               </div>
             </form>
-
-
           </div>
         </div>
       </div >

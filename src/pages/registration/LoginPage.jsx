@@ -5,6 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../redux/slices/authApiSlice";
 import toast from "react-hot-toast";
 import authService from "../../services/authService";
+import Navbars from "../../components/navbar/Navbar";
+import logo from "../../assets/background11.jpg";
+
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -51,7 +54,17 @@ const LoginPage = () => {
     }, [isError, error, isSuccess, data]);
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
+        <>
+        <Navbars/>
+       <div
+                className="flex items-center justify-center min-h-screen px-4"
+                style={{
+                    
+                    marginTop : '-160px',
+                    marginBottom : '-190px',
+                    backgroundColor : '#dddffc'
+                }}
+            >
             {/* main div  */}
             <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
                 {/* Heading  */}
@@ -120,6 +133,8 @@ const LoginPage = () => {
                 </form>
             </div>
         </div>
+     
+        </>
     );
 };
 
