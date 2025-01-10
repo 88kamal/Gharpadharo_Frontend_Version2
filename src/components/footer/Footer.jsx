@@ -195,7 +195,7 @@ const Footer = () => {
 
             <ul class="mt-6 space-y-4">
               <li>
-                <a href="#" title="" class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Customer Support </a>
+                <a href="/contact" title="" class="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Customer Support </a>
               </li>
 
 
