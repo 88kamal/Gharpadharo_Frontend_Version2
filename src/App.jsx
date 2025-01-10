@@ -16,7 +16,6 @@ import AdminHomePage from "./pages/dashboard/admin/pages/AdminHomePage";
 import ShowAllRoomPage from "./pages/dashboard/admin/pages/ShowAllRoomPage";
 import ProfilePage from "./pages/dashboard/admin/pages/ProfilePage";
 import UserProfilePage from "./pages/dashboard/user/pages/UserProfilePage";
-import UserHomePage from "./pages/dashboard/user/pages/UserHomePage";
 import UserDashboard from "./pages/dashboard/user/UserDashboard";
 import AdminViewAllBookingRoom from "./pages/dashboard/admin/pages/AdminViewAllBookingRoom";
 import RoomOwnerRoomBookPage from "./pages/dashboard/roomOwner/pages/RoomOwnerRoomBookPage";
@@ -33,7 +32,7 @@ import RoomOwnerViewRoom from "./pages/dashboard/roomOwner/pages/RoomOwnerViewRo
 import RoomOwnerHomePage from "./pages/dashboard/roomOwner/pages/RoomOwnerHomePage";
 import ScrollTop from "./components/scrollTop/ScrollTop";
 import Footer from "./components/footer/Footer";
-import Pricing from "./pages/pricing/pricing";
+import Pricing from "./pages/pricing/P";
 import Features from "./features/Features";
 
 
