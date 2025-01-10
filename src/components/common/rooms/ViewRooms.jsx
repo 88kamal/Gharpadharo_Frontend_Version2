@@ -86,7 +86,7 @@ const ViewRooms = ({ data, isLoading, error, setPage, setLimit }) => {
               src="https://cdn-icons-png.flaticon.com/128/9961/9961360.png"
               alt="not found"
             />
-            <p>{error.data.error}</p>
+            <p>{error?.data?.error}</p>
           </div>
         )}
 
